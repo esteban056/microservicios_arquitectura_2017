@@ -1,4 +1,4 @@
 Flask==0.10.1
 requests==2.12.4
 afinn
-tweepy
+-e git+https://github.com/tweepy/tweepy.git#egg=tweepy
