@@ -4,7 +4,8 @@
 # Archivo: gui.py
 # Tarea: 2 Arquitecturas Micro Servicios.
 # Autor(es): Perla Velasco & Yonathan Mtz.
-# Version: 1.2 Abril 2017
+#Actualizado por: lili's_team
+# Version: 1.3 Noviembre 2017
 # Descripción:
 #
 #   Este archivo define la interfaz gráfica del usuario. Recibe dos parámetros que posteriormente son enviados
@@ -43,17 +44,22 @@ def sentiment_analysis():
     if len(title) is not 0:
         # La siguiente url es para un servicio local
         url_omdb = urllib.urlopen("http://127.0.0.1:8084/api/v1/information?t=" + title)
-               
-        # Se realiza la obtencion de comentarios
-        urllib.urlopen("http://127.0.0.1:8001/api/v2/tweets?t="+title)
         # La siguiente url es para un servicio en la nube, pregunta al instructor(a) si el servicio está activo
         # url_omdb = urllib.urlopen("https://uaz.cloud.tyk.io/content/api/v1/information?t=" + title)
         # Se lee la respuesta de OMDB
         json_omdb = url_omdb.read()
         # Se convierte en un JSON la respuesta leída
         omdb = json.loads(json_omdb)
+        # Se realiza la obtencion de comentarios no hace falta recibir respuesta
+        urllib.urlopen("http://127.0.0.1:8001/api/v2/tweets?t="+title)
+        #Se realiza la clasificacion de comentarios
+        url_sentiment = urllib.urlopen("http://127.0.0.1:8002/api/v3/sentiment?t="+title)
+        #Se lee el texto generado
+        json_sentiments = url_sentiment.read()
+        #Se convierte a JSON
+        sentiments = json.loads(json_sentiments)
         # Se llena el JSON que se enviará a la interfaz gráfica para mostrársela al usuario
-        json_result = {'omdb': omdb}
+        json_result = {'omdb': omdb,'sentiments':sentiments}
         # Se regresa el template de la interfaz gráfica predefinido así como los datos que deberá cargar
         return render_template("status.html", result=json_result)
     else:

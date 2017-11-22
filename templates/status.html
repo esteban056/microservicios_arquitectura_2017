@@ -98,6 +98,39 @@
     </div>
     <!-- /.container -->
 </section>
+<section id="about" class="about">
+    <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                  <div class="page-header">
+                    <h1><small class="pull-right"></small> Comentarios de twitter </h1>
+                  </div> 
+                   <div class="comments-list">
+                       
+                        {% for comment in result.sentiments %}
+                        <div class="media">
+                           <p class="pull-right"><small>{{comment.polarity}}</small></p>
+                            
+                            <div class="media-body">
+                                <h4 class="media-heading">{{comment.username}}</h4>
+                              
+                              {{comment.text}}
+                              
+                              
+                            </div>
+                        </div>
+                        {% endfor %}
+                          
+                       
+                   </div>
+                    
+                    
+                    
+                </div>
+            </div>
+        </div>
+</section>
+
 
 <!-- Result -->
 <!-- The circle icons use Font Awesome's stacked icon classes. For more information, visit http://fontawesome.io/examples/ -->
