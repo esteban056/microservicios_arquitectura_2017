@@ -1,0 +1,44 @@
+FORMAT: 1A
+HOST: http://localhost:8002/
+
+# Clasification
+
+Clasification es una API que permite obtener el texto de tweets guardados en la base de datos y
+los clasifica en polaridad positiva o negativa de acuerdo a su contenido
+## Coleccion de tweets polarizados [/api/v3/sentiment?t={nombre_pelicula}]
+
+### Lista de tweets con polaridad [GET]
++ Parameters:
+    +nombre_pelicula(String) Nombre de la pelicula para buscar comentarios relevantes
++ Response 200 (application/json)
+
+        [
+            {
+                "polarity": "negative", 
+                "text": "HD David Lynch & Chrysta Bell (of Twin Peaks) - Bird of Flames - Officia... https://t.co/zZ69qyI7Et via @YouTube", 
+                "username": "Scott David Klemp", 
+                "id": "933177335632687109", 
+                "query": "twin peaks"
+            }, 
+            {
+                "polarity": "positive", 
+                "text": "@paigebedore Throwback to this wonderful night that you started Twin Peaks", 
+                "username": "Nathan Velasquez", 
+                "id": "933177203495456768", 
+                "query": "twin peaks"
+            }, 
+            {
+                "polarity": "negative", 
+                "text": "Trying to watch Twin Peaks! https://t.co/7c0nd4qVTp", 
+                "username": "Maryann", 
+                "id": "933175901121998850", 
+                "query": "twin peaks"
+            }, 
+            {
+                "polarity": "positive", 
+                "text": "RT @D_Fark: Finally got around to reading the Final Dossier. Thank you @mfrost11 for keeping the story of Twin Peaks alive and breathing. M\u2026", 
+                "username": "James Walker", 
+                "id": "933175722641887232", 
+                "query": "twin peaks"
+            }
+        ]
