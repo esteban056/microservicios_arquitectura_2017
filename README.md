@@ -34,4 +34,4 @@ Una vez instalados los prerrequisitos es momento de ejcutar el sistema siguiendo
    > http://localhost:8000/ - página de inicio!
 # microservicios_arquitectura_2017
 
-Las especificaciones de los servicios se encuentran en especificacion_apiary/
+Las especificaciones de los servicios se encuentran en servicios/README.md
